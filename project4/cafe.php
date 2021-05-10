@@ -1,52 +1,52 @@
-<?php  
+<?php echo file_get_contents("html/header.html"); ?>
+<?php
 
-  include_once 'connection.php';
+include 'connection.php';
 
-  $result = mysqli_query($conn,"SELECT menu_items, total_cost FROM Cafe");
-
+$result = mysqli_query($conn,"Select menu_items, total_cost FROM Cafe");
 ?>
 
 <!DOCTYPE html>
 <html>
- <head>
- <title> Retrive data</title>
- <link rel = "stylesheet" href="style.css">
- </head>
+<head>
+<title>Cafe</title>
+<link rel = "stylesheet" href="style.css">
+</head>
 <body>
+<h1>Welcome to our Cafe!</h2>
 <?php
 
 if (mysqli_num_rows($result) > 0) {
-?>
+	?>
   <table>
 
   <tr>
    
-   <td>menu_items</td>
-   <td>total_cost</td>
-   
+   <td>Product</td> 
+   <td>Price</td>   
+  
   </tr>
 <?php
-	        $i=0;
-		        while($row = mysqli_fetch_array($result)) {
+		$i=0;
+			while($row = mysqli_fetch_array($result)) {
 ?>
 <tr>
    
-   <td><?php echo $row["menu_items"]; ?></td> 
-   <td><?php echo $row["total_cost"]; ?></td>
-
+   <td><?php echo $row["menu_items"]; ?></td>
+   <td><?php echo $row["total_cost"]; ?></td> 
+     
 </tr>
 <?php
-$i++;
-}
+				$i++;
+			}
 ?>
 </table>
-
 <?php
-}
+		}
 else{
-	        echo "No result found";
+		echo "No result found";
 }
 ?>
+</body>
 
- </body>
 </html>
