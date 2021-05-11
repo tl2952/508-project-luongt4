@@ -7,8 +7,6 @@ if(isset($_POST['Employee_Type'])) {
 
     }
 
-
-
     function employee_check($Employee_Type){
 	switch ($Employee_Type) {
 	     case "Cafe":
